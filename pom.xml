@@ -22,6 +22,7 @@
          <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
    		 <start-class>com.jci.ManagePOCoreServiceApplication</start-class>
    		 <java.version>1.8</java.version>
+   		<!--  <classifier>${project.name}</classifier> -->
     </properties>
     
     

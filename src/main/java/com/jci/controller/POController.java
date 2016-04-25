@@ -40,9 +40,9 @@ public class POController {
     @Qualifier("jdbcPostgresqlTemplate")
     private JdbcTemplate jdbcPostgresqlTemplate;
     
-    @Autowired
+    /*Sunil:Uncomment this @Autowired
     @Qualifier("jdbcOpenedgeTemplate")
-    private JdbcTemplate jdbcOpenedgeTemplate;
+    private JdbcTemplate jdbcOpenedgeTemplate;*/
     
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String sayHello(){
@@ -145,7 +145,7 @@ public class POController {
     	Date date = CommonUtils.stringToDate(dateStr);
         Object[] parameters = new Object[] {date};
         
-        List<Map<String,Object>> rows =    jdbcOpenedgeTemplate.queryForList(Constants.SIMUX_QUERY,parameters);
+        List<Map<String,Object>> rows = null;//   jdbcOpenedgeTemplate.queryForList(Constants.SIMUX_QUERY,parameters);
         System.out.println("rows size--->"+rows.size());
         
         try{

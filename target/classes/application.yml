@@ -1,0 +1,29 @@
+datasource:
+  postgresql:
+    url: jdbc:postgresql://localhost:5432/e2open
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+    validation-query: select 1
+  openedge:  
+    url: jdbc:datadirect:openedge://c217u083.cg.na.jci.com:12700;DatabaseName=symix
+    username: E2Open
+    password: nepO2E01
+    driver-class-name: com.ddtek.jdbc.openedge.OpenEdgeDriver
+    validation-query: select 1
+    
+  #mysql:
+    #url: jdbc:mysql://localhost:3306/primary
+    #username: root
+    #password: root
+    #driver-class-name: com.mysql.jdbc.Driver
+    #validation-query: select 1
+    
+    
+
+logging:
+  level:
+    org.springframework: INFO
+    com.jci: DEBUG
+    com.liquibase: DEBUG
+    

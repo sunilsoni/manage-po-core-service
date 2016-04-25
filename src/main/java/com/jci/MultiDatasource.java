@@ -39,9 +39,9 @@ public class MultiDatasource {
     @Qualifier("jdbcPostgresqlTemplate")
     private JdbcTemplate jdbcPostgresqlTemplate;
     
-    @Autowired
+  /*Sunil:Uncomment this  @Autowired
     @Qualifier("jdbcOpenedgeTemplate")
-    private JdbcTemplate jdbcOpenedgeTemplate;
+    private JdbcTemplate jdbcOpenedgeTemplate;*/
 
    // @Scheduled(fixedRate = 100000)
     public void testQuery(){
@@ -67,7 +67,7 @@ public class MultiDatasource {
         //String symixQuery ="SELECT * FROM \"po\" \"poAlias\" INNER JOIN \"poitem\" \"poitemAlias\"  ON  \"poAlias\".\"po-num\" = \"poitemAlias\".\"po-num\"  INNER JOIN \"vendor\" \"vAlias\"  ON  \"poAlias\".\"vend-num\" = \"vAlias\".\"vend-num\"  INNER JOIN \"item\" \"iAlias\"  ON  \"poitemAlias\".\"item\" = \"iAlias\".\"item\"   INNER JOIN \"shipto\" \"sAlias\"  ON  \"poitemAlias\".\"drop-ship-no\" = \"sAlias\".\"drop-ship-no\" and \"poAlias\".\"drop-ship-no\" = \"sAlias\".\"drop-ship-no\" INNER JOIN \"po-div\" \"podAlias\"  ON  \"podAlias\".\"po-num\" = \"poAlias\".\"po-num\" INNER JOIN \"vendor-div\" \"vdAlias\"  ON  \"vdAlias\".\"vend-num\" = \"vAlias\".\"vend-num\"  INNER JOIN \"item-div\" \"idAlias\"  ON  \"idAlias\".\"item\" = \"iAlias\".\"item\" WHERE \"poAlias\".\"order-date\" >=  ? ";
         //System.out.println("symixQuery---->"+ symixQuery);
         
-        List<Map<String,Object>> rows =    jdbcOpenedgeTemplate.queryForList(Constants.SIMUX_QUERY,parameters);
+        List<Map<String,Object>> rows =  null;//  jdbcOpenedgeTemplate.queryForList(Constants.SIMUX_QUERY,parameters);
         System.out.println("size--->"+rows.size());
         
         try{

@@ -21,11 +21,11 @@ public class MultiDatasourceApplicationConfig {
         return new JdbcTemplate(postgresqlDataSource);
     }
     
-    @Bean(name = "jdbcOpenedgeTemplate")
+    /*Sunil:Uncomment this @Bean(name = "jdbcOpenedgeTemplate")
     public JdbcTemplate jdbcOpenedgeTemplate(@Qualifier(value = "openedgeDataSource") DataSource openedgeDataSource) {
     	System.out.println("### Starting Ending MultiDatasourceApplicationConfig.jdbcOpenedgeTemplate ###");
         return new JdbcTemplate(openedgeDataSource);
-    }
+    }*/
 
     @Bean(name = "postgresqlDataSource")
     @Primary
@@ -35,10 +35,10 @@ public class MultiDatasourceApplicationConfig {
         return DataSourceBuilder.create().build();
     }
     
-    @Bean(name = "openedgeDataSource")
+/* /*Sunil:Uncomment this   @Bean(name = "openedgeDataSource")
     @ConfigurationProperties(prefix="datasource.openedge")
     public DataSource openedgeDataSource() {
     	System.out.println("### Starting Ending MultiDatasourceApplicationConfig.openedgeDataSource ###");
         return DataSourceBuilder.create().build();
-    }
+    }*/
 }

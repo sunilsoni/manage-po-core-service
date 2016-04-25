@@ -91,11 +91,11 @@
 				<artifactId>postgresql</artifactId>
 				<version>9.4.1208.jre7</version>
 			</dependency>
-         <dependency>
+        <!--Sunil: Uncomment this  <dependency>
             <groupId>com.jci</groupId>
             <artifactId>openedge</artifactId>
             <version>11.6</version>
-        </dependency>
+        </dependency> -->
          <!-- <dependency>
             <groupId>com.jci</groupId>
             <artifactId>jfilehelpers</artifactId>

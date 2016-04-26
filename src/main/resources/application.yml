@@ -24,7 +24,7 @@ datasource:
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_URL:http://user:password@localhost:5000}/eureka/
+      defaultZone: ${EUREKA_URL:http://user:password@localhost:8761}/eureka/
 security:
   user:
     password: ${eureka.password}

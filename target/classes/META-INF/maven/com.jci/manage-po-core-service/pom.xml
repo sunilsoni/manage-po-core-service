@@ -22,16 +22,20 @@
          <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
    		 <start-class>com.jci.ManagePOCoreServiceApplication</start-class>
    		 <java.version>1.8</java.version>
-   		<!--  <classifier>${project.name}</classifier> -->
     </properties>
     
     
     
     <dependencies>
-     <!-- Sunil:New -->
-    	<!-- <dependency>
+    
+    <dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		
 	    <dependency>
@@ -43,28 +47,9 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>   -->
-		 
-		  
-		<!--  <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-		  -->
 		
-     <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-client</artifactId>
-        </dependency>  
-        
+		
          <!-- Sunil -->
          <dependency>
 			<!-- Setup Spring Data common components -->

@@ -3,6 +3,7 @@ package com.jci.controller;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jci.domain.E2Open;
+import com.jci.model.UpdateReqRes;
 import com.jci.model.request.FlatFileRequest;
 import com.jci.model.request.PullPoDataRequest;
 import com.jci.model.response.PoNumDataResponse;
@@ -90,6 +92,10 @@ public class POController {
     	status.add(Constants.STATUS_INTRANSIT);
     	status.add(Constants.STATUS_ERRO_IN_PROCESS);
     	
+    	
+    	//Remove below line: 
+    	//status.add(Constants.STATUS_TXN_COMPLETED);
+    	
     	List<E2Open> poList = poRepository.findByStatusIn(status);
     	System.out.println(" Ending getPoData(core)--->"+poList);
 		return CommonUtils.preparePullPoDataResponse(poList);
@@ -139,7 +145,34 @@ public class POController {
     }
     
     
-
+	@RequestMapping(value = "/updatePoStatus", method = RequestMethod.POST, headers = "Accept=application/json")
+    public  UpdateReqRes updateStatus(@RequestBody UpdateReqRes request){
+		System.out.println(" Starting processPoData(core)--->"+request);
+		
+		Map<Long,Integer> idToStatusMap = request.getIdToStatusMap();
+		int size = (idToStatusMap == null) ? 0 : idToStatusMap.size();
+		
+		UpdateReqRes response = new UpdateReqRes();
+		if(size==0){
+			return response;
+		}
+		
+		Map<Long,Integer> map = new HashMap<Long,Integer>();
+		try{
+			
+			idToStatusMap.forEach((k,v)->{
+				int i = poRepository.setStatusFor(v,k);
+				System.out.println("i-->"+i);
+				
+				map.put(k, v);
+			});
+			response.setIdToStatusMap(map);
+		}catch(Exception e){
+			response.setError(true);
+			e.printStackTrace();
+		}
+		return response;
+    }
     
   private int getAndSaveSymixData(String dateStr){
     	Date date = CommonUtils.stringToDate(dateStr);

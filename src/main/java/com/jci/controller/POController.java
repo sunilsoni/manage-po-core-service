@@ -91,10 +91,7 @@ public class POController {
     	List<Integer> status = new ArrayList<>();
     	status.add(Constants.STATUS_INTRANSIT);
     	status.add(Constants.STATUS_ERRO_IN_PROCESS);
-    	
-    	
-    	//Remove below line: 
-    	//status.add(Constants.STATUS_TXN_COMPLETED);
+    	status.add(Constants.STATUS_TXN_COMPLETED);
     	
     	List<E2Open> poList = poRepository.findByStatusIn(status);
     	System.out.println(" Ending getPoData(core)--->"+poList);

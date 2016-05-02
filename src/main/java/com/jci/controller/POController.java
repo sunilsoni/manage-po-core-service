@@ -87,7 +87,7 @@ public class POController {
     @RequestMapping(value = "/pullPoData", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public  PullPoDataResponse getPoData(@RequestBody PullPoDataRequest request){
     	System.out.println(" Starting getPoData(core)--->"+request);
-    	
+    	//getAndSaveSymixData("2013-05-03");
     	List<Integer> status = new ArrayList<>();
     	status.add(Constants.STATUS_INTRANSIT);
     	status.add(Constants.STATUS_ERRO_IN_PROCESS);
@@ -104,8 +104,6 @@ public class POController {
 	@RequestMapping(value = "/getPoNumData", method = RequestMethod.POST, headers = "Accept=application/json")
     public  PoNumDataResponse getPoNumData(@RequestBody FlatFileRequest request){
 		System.out.println(" Starting processPoData(core)--->"+request);
-		//getAndSaveSymixData("2013-05-03");
-		
 		PoNumDataResponse res = new PoNumDataResponse();
 		
 		List<String> poNums =  request.getPoNums();
@@ -122,7 +120,7 @@ public class POController {
     		System.out.println("poListSize--->"+poListSize);
     		
     		if(poListSize==0){
-        		res.setErrorMsg("Data is not available for the give PO numbers!");
+        		res.setErrorMsg("Data is not available for the given PO numbers!");
         	}
     		
     		if(poListSize>0){
@@ -147,8 +145,7 @@ public class POController {
     
 	@RequestMapping(value = "/updatePoStatus", method = RequestMethod.POST, headers = "Accept=application/json")
     public  UpdateReqRes updateStatus(@RequestBody UpdateReqRes request){
-		System.out.println(" Starting processPoData(core)--->"+request);
-		
+		System.out.println(" Starting updatePoStatus(core)--->"+request);
 		Map<Long,Integer> idToStatusMap = request.getIdToStatusMap();
 		int size = (idToStatusMap == null) ? 0 : idToStatusMap.size();
 		
@@ -204,9 +201,10 @@ public class POController {
          	   poRepository.save(e2Open);
         	}
         }catch(Exception e){
-     	   System.out.println("### Exception in  MultiDatasource.testQuery ###"+e.getMessage());
+     	   System.out.println("### Exception in  MultiDatasource.getAndSaveSymixData ###"+e.getMessage());
      	   e.printStackTrace();
         }
+        System.out.println("### Ending  MultiDatasource.getAndSaveSymixData ###");
     	return rows.size();
     }
     

@@ -1475,12 +1475,12 @@ public class PrepareQueryData {
 		//154: RefSupplierID	VARCHAR(64)
 		colName = columnNames[155];
 		if(!CommonUtils.isBlank(colName)){
-			 
-		if(row.containsKey(colName)){
-			e2Open.setRefSupplierID( String.valueOf( row.get(colName)));
-		}else{
-			e2Open.setRefSupplierID( String.valueOf(colName));
-		}}
+			if(row.containsKey(colName)){
+				e2Open.setRefSupplierID( String.valueOf( row.get(colName)));
+			}else{
+				e2Open.setRefSupplierID( String.valueOf(colName));
+			}
+		}
 		//155: FlexStringPORequest1	VARCHAR(255)
 		colName = columnNames[156];
 		if(!CommonUtils.isBlank(colName)){

@@ -789,10 +789,12 @@ public class CommonUtils {
 			
 			details.setDataSource(row.getDataSource());
 			
-			details.setPoDesc(row.getCustomerDescription());//Need to verify
+			details.setPoDesc(row.getCustomerItemDescription());//As discussed it should be Customer Item Description(description)
 			details.setPoId(row.getId());
 			details.setPoNum(row.getOrderNumber());
 			details.setStatus(row.getStatus());
+			
+			details.setSupplierId(row.getSupplierID());
 			poDetails.add(details);
 		}
 		
